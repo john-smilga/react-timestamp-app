@@ -12,7 +12,7 @@ const Form = () => {
   let isDisabled = !name || !minutes || !seconds;
   const { addItem, time } = React.useContext(StampContext);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const stamp = {
@@ -23,8 +23,8 @@ const Form = () => {
       currentTime: {
         hours: time.hours,
         minutes: time.minutes,
-        seconds: time.seconds
-      }
+        seconds: time.seconds,
+      },
     };
     addItem(stamp);
     setName("");
@@ -34,33 +34,39 @@ const Form = () => {
   };
 
   return (
-    <form>
-      <div>
+    <form className="form">
+      <h3>enter timestamp</h3>
+      <div className="form-control">
         <label htmlFor="name">Name</label>
         <input
           type="text"
           value={name}
           ref={inputEl}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
       </div>
-      <div>
+      <div className="form-control">
         <label htmlFor="name">Minutes</label>
         <input
           type="text"
           value={minutes}
-          onChange={e => setMinutes(e.target.value)}
+          onChange={(e) => setMinutes(e.target.value)}
         />
       </div>
-      <div>
+      <div className="form-control">
         <label htmlFor="name">Seconds</label>
         <input
           type="text"
           value={seconds}
-          onChange={e => setSeconds(e.target.value)}
+          onChange={(e) => setSeconds(e.target.value)}
         />
       </div>
-      <button type="submit" onClick={handleSubmit} disabled={isDisabled}>
+      <button
+        type="submit"
+        className="submit-btn"
+        onClick={handleSubmit}
+        disabled={isDisabled}
+      >
         submit here
       </button>
     </form>

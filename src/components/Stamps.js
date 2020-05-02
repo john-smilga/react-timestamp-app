@@ -7,10 +7,14 @@ const Stamps = () => {
 
   return (
     <section className="stamps">
-      {stamps.map(item => {
+      {stamps.map((item) => {
         return <TimeStamp key={item.id} {...item} />;
       })}
-      <button onClick={clearAll}>clear all</button>
+      {stamps.length > 0 && (
+        <button onClick={clearAll} className="clear-btn">
+          clear all
+        </button>
+      )}
     </section>
   );
 };
